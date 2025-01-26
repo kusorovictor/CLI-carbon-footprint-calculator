@@ -38,11 +38,11 @@ fn launch_carbon_footprint_calculator(filename: String) {
         + vehicle_footprint;
 
     data = format!(
-        "\n----TOTAL CARBON ----\n\
+        "\n----TOTAL CARBON FOOTPRINT----\n\
              Total carbon footprint: {:.2} kg of CO2\n\n
              Written at {},{}",
         total_carbon_footprint,
-        match_month(&format_day("%m")),
+        input::match_month(&format_day("%m")),
         format_day("%d %H:%M:%S")
     );
     input::write_to_file(filename.as_str(), data.as_str());
@@ -51,32 +51,13 @@ fn launch_carbon_footprint_calculator(filename: String) {
 fn build_filename() -> String {
     //get the current month
     let binding = format_day("%m");
-    let formatted_month = match_month(&binding);
+    let formatted_month = input::match_month(&binding);
     let mut filename = format!("{}_carbon_footprint_analysis", formatted_month);
 
     //make sure the file created is a text file
     filename.push_str(".txt");
 
     filename
-}
-
-//function to match the month to the current month
-fn match_month(month: &str) -> &str {
-    match month {
-        "01" => "January",
-        "02" => "February",
-        "03" => "March",
-        "04" => "April",
-        "05" => "May",
-        "06" => "June",
-        "07" => "July",
-        "08" => "August",
-        "09" => "September",
-        "10" => "October",
-        "11" => "November",
-        "12" => "December",
-        _ => "Invalid month",
-    }
 }
 
 //function to format the current day to your liking
