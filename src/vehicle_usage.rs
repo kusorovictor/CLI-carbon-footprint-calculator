@@ -79,7 +79,7 @@ pub fn get_total_footprint(filename: String) -> f64 {
     );
     input::write_to_file(filename.as_str(), data.as_str());
 
-    for i in 0..number_of_vehicles {
+    for _ in 0..number_of_vehicles {
         let vehicle_type = input::get_input_i32(
             "Enter the type of vehicle (1 for petrol, 2 for diesel, 3 for CNG):".to_string(),
         );

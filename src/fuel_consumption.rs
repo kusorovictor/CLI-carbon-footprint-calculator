@@ -7,10 +7,9 @@ pub struct FuelConsumption {
     pub carbon_footprint: f64, //in kg of CO2
 }
 
-pub fn get_petrol_consumption() -> FuelConsumption {
-    let fuel_usage = input::get_input_f64(
-        "Enter your monthly household petrol consumption (in litres): ".to_string(),
-    );
+pub fn get_petrol_usage() -> FuelConsumption {
+    let fuel_usage =
+        input::get_input_f64("Enter your monthly household petrol usage (in litres): ".to_string());
     let emission_factor = 2.31; //hardcoded value for nigeria in kg of CO2 per kg
     let carbon_footprint = fuel_usage * emission_factor;
     let petrol_consumption = FuelConsumption {
@@ -21,10 +20,9 @@ pub fn get_petrol_consumption() -> FuelConsumption {
     petrol_consumption
 }
 
-pub fn get_lpg_consumption() -> FuelConsumption {
-    let fuel_usage = input::get_input_f64(
-        "Enter your monthly cooking gas consumption (in litres): ".to_string(),
-    );
+pub fn get_lpg_usage() -> FuelConsumption {
+    let fuel_usage =
+        input::get_input_f64("Enter your monthly cooking gas usage (in litres): ".to_string());
     let emission_factor = 2.96; //hardcoded value for nigeria in kg of CO2 per kg
     let carbon_footprint = fuel_usage * emission_factor;
     let petrol_consumption = FuelConsumption {
@@ -37,8 +35,8 @@ pub fn get_lpg_consumption() -> FuelConsumption {
 
 pub fn get_total_footprint(filename: String) -> f64 {
     println!("\nCalculating your household fuel consumption carbon footprint...");
-    let petrol_consumption = get_petrol_consumption();
-    let lpg_consumption = get_lpg_consumption();
+    let petrol_consumption = get_petrol_usage();
+    let lpg_consumption = get_lpg_usage();
     let total_footprint = petrol_consumption.carbon_footprint + lpg_consumption.carbon_footprint;
 
     let data = format!(

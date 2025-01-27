@@ -1,7 +1,4 @@
-use core::num;
-use std::fmt::format;
-
-use crate::{electricity_consumption, input};
+use crate::input;
 
 pub struct ElectricityConsumption {
     power_rating: f64,         // in watts
